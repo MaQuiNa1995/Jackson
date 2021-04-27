@@ -14,19 +14,16 @@ import lombok.ToString;
 
 @Getter
 @Setter
-@ToString
+@ToString(callSuper = true)
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @JsonTypeInfo(use = Id.NAME,
-        include = As.PROPERTY,
-        property = "propertyAnotación")
-@JsonSubTypes({ @Type(value = Bruja.class,
-        name = "Bruja"),
-        @Type(value = Kunoichi.class,
-                name = "Kunoichi"),
-        @Type(value = Guerrero.class,
-                name = "Guerrero") })
-public abstract class ClaseMmo {
+        include = As.EXISTING_PROPERTY,
+        property = "magia")
+@JsonSubTypes({ @Type(value = Valquiria.class,
+        name = "Magia Blanca"),
+        @Type(value = CaballeroOscuro.class,
+                name = "Magia Negra") })
+public abstract class Guerrero extends ClaseMmo {
 
-	private Long id;
-	private String armaPrincipal;
+	private String armaSecundaria;
 }

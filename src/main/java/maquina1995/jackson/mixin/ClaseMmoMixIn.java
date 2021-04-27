@@ -6,7 +6,7 @@ import com.fasterxml.jackson.databind.annotation.JsonAppend.Prop;
 import maquina1995.jackson.writter.ClaseMmoWritter;
 
 @JsonAppend(props = { @Prop(value = ClaseMmoWritter.class,
-        name = "tipo",
+        name = "propertyMixIn",
         type = String.class) })
 public interface ClaseMmoMixIn {
 

@@ -9,6 +9,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 
 import lombok.extern.slf4j.Slf4j;
 import maquina1995.jackson.domain.ClaseMmo;
+import maquina1995.jackson.domain.Guerrero;
 
 @Slf4j
 @Service
@@ -20,6 +21,9 @@ public class JacksonService {
 	@Resource(name = "serializadorMixIn")
 	private ObjectMapper objectMapperConMixIn;
 
+	@Resource(name = "serializadorDeserializadorCustom")
+	private ObjectMapper objectMapperConDeserializadorCustom;
+
 	public void serializacion(ClaseMmo claseMmo) throws JsonProcessingException {
 
 		String json = objectMapper.writeValueAsString(claseMmo);
@@ -30,6 +34,14 @@ public class JacksonService {
 
 		String json = objectMapperConMixIn.writeValueAsString(claseMmo);
 		this.mostrarEnPantalla(claseMmo, json);
+	}
+
+	public void deserializarjson(String json) throws JsonProcessingException {
+
+		log.info("Deserializando JSON...");
+		log.info(objectMapperConDeserializadorCustom.readValue(json, Guerrero.class)
+		        .toString());
+
 	}
 
 	private void mostrarEnPantalla(ClaseMmo claseMmo, String json) {

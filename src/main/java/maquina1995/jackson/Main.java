@@ -37,6 +37,14 @@ public class Main implements CommandLineRunner {
 		bruja.setMagia("Magia Negra");
 
 		jacksonService.serializacion(bruja);
+
+		String caballeroOscuro = "{\"id\":3,\"armaPrincipal\":\"Espada Larga\",\"armaSecundaria\":\"Espada Larga\",\"magia\":\"Magia Negra\"}";
+
+		jacksonService.deserializarjson(caballeroOscuro);
+
+		String valquiriaJson = "{\"id\":4,\"armaPrincipal\":\"Espada Larga\",\"armaSecundaria\":\"Escudo\",\"magia\":\"Magia Blanca\"}";
+
+		jacksonService.deserializarjson(valquiriaJson);
 	}
 
 }
